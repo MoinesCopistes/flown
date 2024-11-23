@@ -1,4 +1,5 @@
 import { BUTTONS } from "./buttons";
+import { THRESHOLDS } from "./levels";
 import { comparaison } from "./utils";
 
 export function addButton(buttonName) {
@@ -13,7 +14,7 @@ export function addButton(buttonName) {
         button["callback"]();
         window.user_p5.redraw()
         btn.disabled = false;
-        if (comparaison(window.reference, window.user) >= 0.95) {
+        if (comparaison(window.reference, window.user) >= THRESHOLDS[window.level]) {
             setTimeout(() => {
                 /*window.level += 1;
                 window.user_p5.loadLevel();

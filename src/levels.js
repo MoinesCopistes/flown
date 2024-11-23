@@ -11,7 +11,8 @@ import { edge } from "./transformations/edge";
 import { merge } from "./transformations/merge";
 import { blank } from "./transformations/basic";
 import { addButton } from "./button"
-export const LEVELS = [level1, level2, level3, level4, level5]
+export const LEVELS = [level1, level2, level3, level4, level5];
+export const THRESHOLDS = [0.95, 0.95, 0.95, 1, 0.95];
 
 export function level1(p) {
     addButton("blank");
