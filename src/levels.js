@@ -1,20 +1,40 @@
 import { get_base } from "./utils";
+import { basicTransform } from "./transformations/basic";
+import { form_rounding } from "./transformations/form_rounding";
+import { inverse } from "./transformations/inverse";
+import { line_cutter } from "./transformations/line_cutter";
+
 
 export function blank(p) {
     return get_base(p).get()
 }
 
 export function level1(p) {
-    let base = get_base(p);
-    base.fill(0);
-    base.noSmooth();
-    base.circle(0, 0, 50)
-    return base.get()
+    let image = blank(p);
+    image = basicTransform(image,p);
+    return image;
 }
 
 export function level2(p) {
-    let base = get_base(p);
-    base.fill(0);
-    base.circle(0, 0, 150)
-    return base.get()
+    let image = blank(p);
+    image = basicTransform(image,p);
+    image = form_rounding(image,p);
+    return image;
+}
+
+export function level3(p) {
+    let image = blank(p);
+    image = basicTransform(image,p);
+    image = form_rounding(image,p);
+    image = line_cutter(image,p);
+    return image;
+}
+
+export function level4(p) {
+    let image = blank(p);
+    image = basicTransform(image,p);
+    image = form_rounding(image,p);
+    image = line_cutter(image,p);
+    image = inverse(image,p);
+    return image;
 }

@@ -73,8 +73,11 @@ class Game {
           window.user = edge(window.user, window.user_p5)
         })
         
-        addButton(this.buttonsContainer, "brown", () => {
-          logUniqueRGBA(window.user)
+        addButton(this.buttonsContainer, "purple", () => {
+          window.user = inverse(window.user, window.user_p5)
+        })
+        addButton(this.buttonsContainer, "orange", () => {
+          window.user = form_rounding(window.user, window.user_p5)
         })
         console.log(this.reference_canvas)
         new p5(this.canvasHandle("reference"), this.canvas_container);
