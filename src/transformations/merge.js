@@ -19,7 +19,6 @@ export function merge(image1, image2, p) {
         base.pixels[x+1] = 0;
         base.pixels[x+2] = 0;
         base.pixels[x+3] = 255;
-        console.log("heheheh")
        }
     }
     base.updatePixels();

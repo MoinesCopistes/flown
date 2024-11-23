@@ -1,20 +1,5 @@
-import { addButton } from "./button";
-import { level1, level2 } from "./levels";
-import { logUniqueRGBA } from "./utils";
-
-import { get_base } from "./utils";
 import {  LEVELS } from "./levels";
 import { blank } from "./transformations/basic";
-import { Rect } from "./transformations/basic";
-import { half_cutter } from "./transformations/half_cutter";
-import { scale } from "./transformations/scale2";
-import { rotate } from "./transformations/rotation";
-import { form_rounding, Round} from "./transformations/form_rounding";
-import { form_triangle, Triangle } from "./transformations/form_triangle";
-import { inverse } from "./transformations/inverse";
-import { line_cutter } from "./transformations/line_cutter";
-import { edge } from "./transformations/edge";
-import { merge } from "./transformations/merge";
 
 import { drawAscii, grayscale } from "./transformations/picture";  
 
@@ -59,7 +44,7 @@ class Game {
         if (image) {  
  
           p.image(image, 15, 15, p.width/4, p.height/4)
-          p.stroke(255, 0, 0);  // Set the stroke color (red in this case)
+          p.stroke("#8e44ad");  // Set the stroke color (red in this case)
           p.strokeWeight(4);  // Set stroke weight (thickness)
           p.noFill();
           

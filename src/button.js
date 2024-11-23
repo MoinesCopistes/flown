@@ -4,8 +4,6 @@ import { comparaison } from "./utils";
 
 export function addButton(buttonName) {
     let button = BUTTONS[buttonName];    
-    console.log("adding button")
-    console.log(button["color"])
     let btn = document.createElement("button")
     btn.style.setProperty("--color", button["color"]);
     btn.className = "transformation"
@@ -25,7 +23,6 @@ export function addButton(buttonName) {
            
         }
     });
-    console.log(button["animation"])
     if (button["animation"] != null) {
         const animationName = `button-animation-${Math.random()}`.replace(".", "");
         const styleSheet = document.styleSheets[0];
