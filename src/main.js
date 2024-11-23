@@ -243,6 +243,16 @@ class Game {
     p.setup = () => {
       p.drawingContext.imageSmoothingEnabled = false;
       p.createCanvas(1400, 850);
+      // Create a button using p5.js
+      let button = p.createButton("");
+      // Create an SVG image for the button
+      const svgImg = p.createImg(
+        "https://i1.sndcdn.com/artworks-x8zI2HVC2pnkK7F5-4xKLyA-t1080x1080.jpg"
+      );
+      svgImg.size(50, 50); // Set the size of the SVG
+      svgImg.parent(button); // Attach the SVG to the button
+      button.position(window.width + 200, 10); // Position the button
+      button.mousePressed(() => {this.toggleCanvasSwap()}); // Attach an event to the button
       img = p.loadImage("https://i1.sndcdn.com/artworks-x8zI2HVC2pnkK7F5-4xKLyA-t1080x1080.jpg", () => {
         let grayscale_pic = grayscale(img, p, 9, 4);
         drawAscii(grayscale_pic, p)
