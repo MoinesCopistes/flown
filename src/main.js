@@ -1,6 +1,7 @@
 import { addButton } from "./button"
 import { blank, level1 } from "./levels";
 import { basicTransform } from "./transformations/basic";
+import { half_cutter } from "./transformations/half_cutter";
 
 class Game {
     
@@ -29,6 +30,12 @@ class Game {
         // This is how to add a new button
         addButton(this.buttonsContainer, "red", () => {
             window.user = basicTransform(window.user, window.user_p5)
+        })
+        addButton(this.buttonsContainer, "blue", () => {
+            window.user = half_cutter(window.user, window.user_p5)
+        })
+        addButton(this.buttonsContainer, "green", () => {
+            window.user = blank(window.user_p5)
         })
         console.log(this.reference_canvas)
         new p5(this.canvasHandle("reference"), this.canvas_container);
