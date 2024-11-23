@@ -1,9 +1,11 @@
 import { addButton } from "./button"
 import { blank, level1 } from "./levels";
 import { basicTransform } from "./transformations/basic";
+import { half_cutter } from "./transformations/half_cutter";
 import { scale } from "./transformations/scale";
 import { rotate } from "./transformations/rotation";
 import { line_cutter } from "./transformations/line_cutter";
+
 
 class Game {
     
@@ -35,6 +37,12 @@ class Game {
           window.user = basicTransform(window.user, window.user_p5)
         })
         addButton(this.buttonsContainer, "blue", () => {
+            window.user = half_cutter(window.user, window.user_p5)
+        })
+        addButton(this.buttonsContainer, "green", () => {
+            window.user = blank(window.user_p5)
+        })
+        addButton(this.buttonsContainer, "gray", () => {
           window.user = scale(2)
         })        
         addButton(this.buttonsContainer, "yellow", () => {
