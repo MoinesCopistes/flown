@@ -1,6 +1,7 @@
 import { addButton } from "./button"
 import { blank, level1 } from "./levels";
 import { basicTransform } from "./transformations/basic";
+import { line_cutter } from "./transformations/line_cutter";
 
 class Game {
     
