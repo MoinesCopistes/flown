@@ -3,6 +3,7 @@ import { blank, level1 } from "./levels";
 import { basicTransform } from "./transformations/basic";
 import { scale } from "./transformations/scale";
 import { rotate } from "./transformations/rotation";
+import { line_cutter } from "./transformations/line_cutter";
 
 class Game {
     
