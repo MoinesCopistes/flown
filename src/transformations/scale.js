@@ -1,7 +1,8 @@
 export function scale(scale_factor) {
   let p = window.user_p5;
   let base = p.createGraphics(p.width, p.height);
-  p.smooth();
+  
+  p.noSmooth();
   
   base.image(
     window.user,

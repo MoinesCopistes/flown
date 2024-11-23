@@ -21,8 +21,8 @@ class Game {
               p.draw = function () {
                 p.background(255);
                 let image = window[globalImageName]
-                if (image) {
-                    p.image(image, 0, 0)
+                if (image) {  
+                  p.image(image, 0, 0)
                 }
               };            
         }
