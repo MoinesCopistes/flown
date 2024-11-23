@@ -89,6 +89,9 @@ class Game {
         addButton(this.buttonsContainer, "#2c3e50", () => {
           window.user = Round(window.user, window.user_p5)
         })
+        addButton(this.buttonsContainer, "#474787", () => {
+          window.user = line_cutter(window.user, window.user_p5)
+        })
         console.log(this.reference_canvas)
         new p5(this.canvasHandle("reference"), this.canvas_container);
         new p5(this.canvasHandle("user"), this.canvas_container);
