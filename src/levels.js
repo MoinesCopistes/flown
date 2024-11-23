@@ -1,6 +1,10 @@
 import { get_base } from "./utils";
 import { Rect } from "./transformations/basic";
-import { form_rounding } from "./transformations/form_rounding";
+import { half_cutter } from "./transformations/half_cutter";
+import { scale } from "./transformations/scale2";
+import { rotate } from "./transformations/rotation";
+import { form_rounding, Round} from "./transformations/form_rounding";
+import { form_triangle, Triangle } from "./transformations/form_triangle";
 import { inverse } from "./transformations/inverse";
 import { line_cutter } from "./transformations/line_cutter";
 
