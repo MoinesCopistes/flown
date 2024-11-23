@@ -218,11 +218,13 @@ class Game {
       if (this.isSwapped) {
           // Currently showing the new canvas, switch back to initial canvases
           this.pictureContainer.style.display = "none";
+          this.buttonsContainer.style.display = "flex";
           this.canvas_container.style.display = "flex"; // Restore the display style
           this.isSwapped = false;
       } else {
           // Currently showing initial canvases, switch to new canvas
           this.canvas_container.style.display = "none";
+          this.buttonsContainer.style.display = "none";
           this.pictureContainer.style.display = "block";
           // Create the p5 instance if not already created
           if (!this.newCanvasCreated) {
@@ -237,8 +239,8 @@ class Game {
     let img;
     p.setup = () => {
       p.drawingContext.imageSmoothingEnabled = false;
-      p.createCanvas(700, 500);
-      img = p.loadImage("https://cdn.webshopapp.com/shops/276355/files/453554637/golden-retriever.jpg", () => {
+      p.createCanvas(1400, 850);
+      img = p.loadImage("https://i1.sndcdn.com/artworks-x8zI2HVC2pnkK7F5-4xKLyA-t1080x1080.jpg", () => {
         let grayscale_pic = grayscale(img, p, 9, 4);
         drawAscii(grayscale_pic, p)
         // p.image(grayscale_pic, p.width/2 - img.width/2, 0, img.width, img.height);

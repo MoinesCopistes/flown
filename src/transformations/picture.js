@@ -28,10 +28,11 @@ export function grayscale(image, p, b_levels, g_size) {
 }
 
 export function drawAscii(img, p) {
-  const asciiChars = ["@", "%", "#", "*", "=", "-", ".", " "];
+  // const asciiChars = ["@", "%", "#", "*", "=", "-", ".", " "];
+  const asciiChars = ["@", "%", "=", ".", " "];
 
-  const charWidth = 8;
-  const charHeight = 8;
+  const charWidth = 12;
+  const charHeight = 12;
   // p.image(img, 0, 0);
   p.textFont("monospace", charHeight);
   p.textAlign(p.CENTER, p.CENTER);
@@ -59,7 +60,10 @@ export function drawAscii(img, p) {
       const asciiChar = asciiChars[charIndex];
 
       p.fill(0);
-      p.text(asciiChar, x + charWidth / 2 + p.width/2 - img.width/2, y + charHeight / 2);
+      let ratio = 0.7;
+      
+      let xd = 0.15 * p.width;
+      p.text(asciiChar, ratio * (x + charWidth / 2 + p.width/2 - img.width/2) + xd, ratio * (y + charHeight / 2));
     }
   }
 }
