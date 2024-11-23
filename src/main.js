@@ -56,47 +56,128 @@ class Game {
     // This is how to add a new button
     addButton(this.buttonsContainer, "red", () => {
       window.user = Rect(window.user, window.user_p5)
-    })
+    },`
+    0% {
+      border-radius: 0%;
+    }
+    100% {
+      border-radius: 12px;
+    }
+    `)
     addButton(this.buttonsContainer, "blue", () => {
       window.user = half_cutter(window.user, window.user_p5)
-    })
+    }, `
+    0% {
+        clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%);
+    }
+    100% {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    }
+    `)
     addButton(this.buttonsContainer, "green", () => {
         window.user = blank(window.user_p5)
-    })
+    },`
+        0% {
+        background: transparent;
+        opacity: 0;
+    }
+    75% {
+        background: var(--color);
+        opacity: 0.5;
+    }
+    100% {
+        background: var(--color);
+        opacity: 1;
+    }
+    `)
     addButton(this.buttonsContainer, "gray", () => {
       window.user = scale(window.user, window.user_p5)
-    })        
+    },`
+        0% {
+        transform: scale(0.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+    `)        
     addButton(this.buttonsContainer, "yellow", () => {
       window.user = rotate(window.user, window.user_p5)
-    })
-    addButton(this.buttonsContainer, "black", () => {
-      this.setLevel(level2)
-    })
+    },`
+        0% {
+        transform: rotate(90deg);
+        opacity: 0;
+    }
+    100% {
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+    `)
+
     addButton(this.buttonsContainer, "brown", () => {
       window.user = edge(window.user, window.user_p5)
-    })
+    },`
+    0% {
+      background-color: transparent;
+      box-shadow: 0 0 0 2px var(--color) inset;
+    }
+    100% {
+      background-color: var(--color);
+      box-shadow: none;
+    }
+    `)
 
     addButton(this.buttonsContainer, "purple", () => {
       window.user = inverse(window.user, window.user_p5)
-    })
+    }, `
+    0% {
+      background-color: #3498db;
+      border: 3px solid #3498db;
+    }
+    100% {
+      background-color: #9b59b6;
+      border: 3px solid #9b59b6;
+    }
+    `)
     addButton(this.buttonsContainer, "orange", () => {
       window.user = form_rounding(window.user, window.user_p5)
-    })
+    },`
+    0% {
+      border-radius: 100%;
+    }
+    100% {
+      border-radius: 10px;
+    }
+    `)
     addButton(this.buttonsContainer, "pink", () => {
       window.user = form_triangle(window.user, window.user_p5)
-    })
-    addButton(this.buttonsContainer, "#2ecc71", () => {
-      window.user = Triangle(window.user, window.user_p5)
-    })
-    addButton(this.buttonsContainer, "#2c3e50", () => {
-      window.user = Round(window.user, window.user_p5)
-    })
+    },`
+    0% {
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    }
+    5% {
+      clip-path: polygon(45% 0%, 0% 100%, 100% 100%, 55% 0%);
+    }
+
+    100% {
+      clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
+    }
+    `)
     addButton(this.buttonsContainer, "#474787", () => {
       window.user = line_cutter(window.user, window.user_p5)
-    })
+    },`
+    0% {
+      background: linear-gradient(to right, transparent 0%, transparent 45%, var(--color) 46%, transparent 47%, transparent 100%);
+    }
+    100% {
+      background: var(--color);
+    }
+    `)
     addButton(this.buttonsContainer, "#34e8eb", () => {
       this.toggleCanvasSwap();
     });
+    addButton(this.buttonsContainer, "black", () => {
+      this.setLevel(level2)
+    })
     console.log(this.reference_canvas)
     new p5(this.canvasHandle("reference"), this.canvas_container);
     new p5(this.canvasHandle("user"), this.canvas_container);
