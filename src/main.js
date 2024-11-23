@@ -1,5 +1,5 @@
 import { addButton } from "./button"
-import { blank, level1 } from "./levels";
+import { blank, level1, level2 } from "./levels";
 import { basicTransform } from "./transformations/basic";
 import { half_cutter } from "./transformations/half_cutter";
 import { scale } from "./transformations/scale";
@@ -9,14 +9,26 @@ import { line_cutter } from "./transformations/line_cutter";
 
 class Game {
     
+    setLevel(level) {
+      window.level = level;
+      window.user_p5.loadLevel();
+      window.reference_p5.loadLevel();
+    }
     canvasHandle(globalImageName) {
         return (p) => {
             window[globalImageName+"_p5"] = p
+            p.loadLevel = function () {
+              p.background(255);
+              window[globalImageName] = globalImageName == "reference" ? window.level(p) : blank(p)
+              p.redraw()
+            }
             p.setup = function () {
                 p.pixelDensity(10);
                 p.createCanvas(700, 300);
-                p.background(0);
-                window[globalImageName] = globalImageName == "reference" ? level1(p) : blank(p)
+                p.background(255);
+                // avoid looping at 60fps
+                p.noLoop()
+                p.loadLevel()
               };
               p.draw = function () {
                 p.background(255);
@@ -31,6 +43,8 @@ class Game {
     constructor() {
         this.canvas_container = document.getElementById("canvases")
         this.buttonsContainer = document.getElementById("buttons")
+
+        window.level = level1
 
         // This is how to add a new button
         addButton(this.buttonsContainer, "red", () => {
@@ -48,6 +62,11 @@ class Game {
         addButton(this.buttonsContainer, "yellow", () => {
           window.user = rotate(0.785)
         })
+
+        addButton(this.buttonsContainer, "black", () => {
+          this.setLevel(level2)
+        })
+        
         
         console.log(this.reference_canvas)
         new p5(this.canvasHandle("reference"), this.canvas_container);
