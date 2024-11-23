@@ -7,6 +7,14 @@ export function blank(p) {
 export function level1(p) {
     let base = get_base(p);
     base.fill(0);
+    base.noSmooth();
     base.circle(0, 0, 50)
+    return base.get()
+}
+
+export function level2(p) {
+    let base = get_base(p);
+    base.fill(0);
+    base.circle(0, 0, 150)
     return base.get()
 }
