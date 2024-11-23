@@ -1,11 +1,12 @@
-export function rotate(angle) {
-  let p = window.user_p5;
+import { get_base } from "../utils";
+
+export function rotate(image, p) {
   let base = p.createGraphics(p.width, p.height);
   base.translate(p.width / 2, p.height / 2);
-  base.rotate(angle)
+  base.rotate(Math.PI/2)
   base.noSmooth();
-  base.image(window.user, -p.width / 2, -p.height / 2, p.width, p.height);
-  let image = base.get()
+  base.image(image, -p.width / 2, -p.height / 2, p.width, p.height);
+  image = base.get()
   base.remove()
   base = null;
   image.filter(p.THRESHOLD, 0.5)
