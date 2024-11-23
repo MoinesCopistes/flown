@@ -76,18 +76,14 @@ export function level4(p) {
 export function level5(p) {
     let image1 = blank(p);
     image1 = Rect(image1,p);
-    image1 = half_cutter(image1,p);
+    image1 = edge(image1,p);
 
     let image2 = blank(p);
     image2 = Rect(image2,p);
     image2 = half_cutter(image2,p);
-    image2 = edge(image2,p);
-    image2 = rotate(image2,p);
-    image2 = rotate(image2,p);
-
     let image3 = merge(image1,image2,p);
     let image4 = rotate(image3,p);
-    image4 = rotate(image3,p);
+    image4 = merge(image3, image4, p);
 
-    return merge(image3,image4,p);
+    return image4
 }

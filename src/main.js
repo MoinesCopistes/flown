@@ -1,10 +1,10 @@
 import { addButton } from "./button";
 import { level1, level2 } from "./levels";
-import { blank } from "./transformations/basic";
 import { logUniqueRGBA } from "./utils";
 
 import { get_base } from "./utils";
-import { blank, level1, level2, LEVELS } from "./levels";
+import {  LEVELS } from "./levels";
+import { blank } from "./transformations/basic";
 import { Rect } from "./transformations/basic";
 import { half_cutter } from "./transformations/half_cutter";
 import { scale } from "./transformations/scale2";
@@ -15,8 +15,6 @@ import { inverse } from "./transformations/inverse";
 import { line_cutter } from "./transformations/line_cutter";
 import { edge } from "./transformations/edge";
 import { merge } from "./transformations/merge";
-import { blank } from "./transformations/basic";
-import { addButton } from "./button"
 
 import { drawAscii, grayscale } from "./transformations/picture";  
 
@@ -77,6 +75,7 @@ class Game {
   constructor() {
     this.canvas_container = document.getElementById("canvases");
     this.pictureContainer = document.getElementById("picture");
+    this.buttonsContainer = document.getElementById("buttons");
     this.pictureCreated = false; // Flag to check if the new canvas has been created
     this.isSwapped = false; // Flag to track the current canvas state
     window.level = 0;

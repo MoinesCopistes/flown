@@ -8,6 +8,7 @@ import { inverse } from "./transformations/inverse";
 import { line_cutter } from "./transformations/line_cutter";
 import { edge } from "./transformations/edge";
 import { blank } from "./transformations/basic";
+import { merge } from "./transformations/merge";
 
 export const BUTTONS = {
     rect: {
@@ -33,7 +34,7 @@ export const BUTTONS = {
                         }
                         `,
         callback: () => {
-            window.user = half_cutter(window.user_p5)
+            window.user = half_cutter(window.user, window.user_p5)
         }
     },
     blank: {
@@ -134,7 +135,7 @@ export const BUTTONS = {
             window.user = Triangle(window.user, window.user_p5)
         }
     },
-    swicth: {
+    switch: {
         color: "purple",
         animation: null,
         callback: () => {
