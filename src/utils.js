@@ -11,15 +11,27 @@ export function comparaison(reference, user){
   user.loadPixels();
   let r = reference.pixels;
   let u = user.pixels;
+  let sum = 0;
   let count = 0;
-  for(let i = 0; i < r.length; i += 1){
-      if (r[i] === u[i] && r[i + 1] === u[i + 1] && r[i + 2] === u[i + 2] && r[i + 3] === u[i + 3]) {
-
-        count++;        
+  for(let i = 0; i < r.length; i += 4){
+      // black pixel in ref
+      if (r[i] === 0 && r[i+3] != 0) {
+        count++;
+        // that is also in user drawing
+        if (u[i] === 0 && u[i+3] != 0) {
+            sum++;
+            continue;        
+        }
       }
+
+      // black pixel in user drawing not in ref
+      if (u[i] === 0 && u[i+3] != 0) {
+        count++;
+      }
+      
   }
 
-  return ((ret / (r.length / 4)) * 100) > 90;
+  return sum/count;
 }
 
 export function logUniqueRGBA(image) {

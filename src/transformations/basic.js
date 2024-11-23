@@ -13,3 +13,7 @@ export function Rect(image, p) {
     base = null;
     return image
 }
+
+export function blank(p) {
+    return get_base(p).get()
+}
