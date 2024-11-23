@@ -4,3 +4,17 @@ export function get_base(p) {
     base.background(255);
     return base;
 }
+
+export function Comparaison(reference, user){
+    reference.loadPixels();
+    user.loadPixels();
+    let r = reference.pixels;
+    let u = user.pixels;
+    let ret = true;
+    for(let i = 0; i < r.length; i += 1){
+        if(r[i] != u[i]){
+            ret = false;        
+        }
+    }
+    return ret;
+}
