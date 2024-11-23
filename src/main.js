@@ -4,8 +4,8 @@ import { Rect } from "./transformations/basic";
 import { half_cutter } from "./transformations/half_cutter";
 import { scale } from "./transformations/scale2";
 import { rotate } from "./transformations/rotation";
-import { form_rounding } from "./transformations/form_rounding";
-import { form_triangle } from "./transformations/form_triangle";
+import { form_rounding, Round} from "./transformations/form_rounding";
+import { form_triangle, Triangle } from "./transformations/form_triangle";
 import { inverse } from "./transformations/inverse";
 import { line_cutter } from "./transformations/line_cutter";
 
@@ -82,6 +82,12 @@ class Game {
         })
         addButton(this.buttonsContainer, "pink", () => {
           window.user = form_triangle(window.user, window.user_p5)
+        })
+        addButton(this.buttonsContainer, "#2ecc71", () => {
+          window.user = Triangle(window.user, window.user_p5)
+        })
+        addButton(this.buttonsContainer, "#2c3e50", () => {
+          window.user = Round(window.user, window.user_p5)
         })
         console.log(this.reference_canvas)
         new p5(this.canvasHandle("reference"), this.canvas_container);

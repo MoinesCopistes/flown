@@ -1,3 +1,5 @@
+import { get_base } from "../utils"
+
 export function form_triangle(image,p){
     let pi = image;
     let mask = p.createGraphics(p.width, p.height);
@@ -9,4 +11,16 @@ export function form_triangle(image,p){
     // Apply the mask to the content
     image.mask(mask);
     return image;
+}
+
+export function Triangle(image, p) {
+    let base = p.createGraphics(p.width, p.height);
+    base.image(image, 0, 0)
+    base.fill(0,0,0);
+    base.noStroke();
+    base.triangle(300,200,400,200,350,100);
+    image = base.get()
+    base.remove()
+    base = null;
+    return image
 }
