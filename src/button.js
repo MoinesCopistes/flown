@@ -1,3 +1,5 @@
+import { comparaison } from "./utils";
+
 export function addButton(container, color, callback, animation = null) {
     console.log("adding button")
     console.log(color)
@@ -9,6 +11,16 @@ export function addButton(container, color, callback, animation = null) {
         callback();
         window.user_p5.redraw()
         btn.disabled = false;
+        if (comparaison(window.reference, window.user) >= 0.95) {
+            setTimeout(() => {
+                /*window.level += 1;
+                window.user_p5.loadLevel();
+                window.reference_p5.loadLevel();*/
+                window.game.toggleCanvasSwap();
+
+            }, 500)
+           
+        }
     });
     console.log(animation)
     if (animation != null) {

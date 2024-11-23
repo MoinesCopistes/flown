@@ -1,5 +1,5 @@
 import { addButton } from "./button";
-import { blank, level1, level2 } from "./levels";
+import { blank, level1, level2, LEVELS } from "./levels";
 import { Rect } from "./transformations/basic";
 import { half_cutter } from "./transformations/half_cutter";
 import { scale } from "./transformations/scale2";
@@ -32,7 +32,7 @@ class Game {
       p.loadLevel = function () {
         p.background(255);
         window[globalImageName] =
-          globalImageName == "reference" ? window.level(p) : blank(p);
+          globalImageName == "reference" ? LEVELS[window.level](p) : blank(p);
         p.redraw();
       };
       p.setup = function () {
@@ -54,12 +54,14 @@ class Game {
         if (globalImageName == "user") {
         let image = window.user2;
         if (image) {  
+ 
+          p.image(image, 15, 15, p.width/4, p.height/4)
           p.stroke(255, 0, 0);  // Set the stroke color (red in this case)
           p.strokeWeight(4);  // Set stroke weight (thickness)
+          p.noFill();
           
           // Draw a rectangle around the image
           p.rect(15, 15, p.width/4, p.height/4);  
-          p.image(image, 15, 15, p.width/4, p.height/4)
         }
 
       }
@@ -73,7 +75,7 @@ class Game {
     this.pictureContainer = document.getElementById("picture");
     this.pictureCreated = false; // Flag to check if the new canvas has been created
     this.isSwapped = false; // Flag to track the current canvas state
-    window.level = level1;
+    window.level = 0;
 
     // This is how to add a new button
     addButton(this.buttonsContainer, "red", () => {
@@ -198,6 +200,7 @@ class Game {
     addButton(this.buttonsContainer, "black", () => {
       this.setLevel(level2)
     })
+    window.game = this;
     addButton(this.buttonsContainer, "#81ecec", () => {
                   this.switchCanvas();
                   window.user = blank(window.user_p5);
@@ -252,7 +255,10 @@ class Game {
       svgImg.size(50, 50); // Set the size of the SVG
       svgImg.parent(button); // Attach the SVG to the button
       button.position(window.width + 200, 10); // Position the button
-      button.mousePressed(() => {this.toggleCanvasSwap()}); // Attach an event to the button
+      button.mousePressed(() => {
+        this.setLevel(window.level+1)
+        this.toggleCanvasSwap()
+      }); // Attach an event to the button
       img = p.loadImage("https://i1.sndcdn.com/artworks-x8zI2HVC2pnkK7F5-4xKLyA-t1080x1080.jpg", () => {
         let grayscale_pic = grayscale(img, p, 9, 4);
         drawAscii(grayscale_pic, p)

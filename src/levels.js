@@ -10,6 +10,7 @@ import { line_cutter } from "./transformations/line_cutter";
 import { edge } from "./transformations/edge";
 import { merge } from "./transformations/merge";
 
+export const LEVELS = [level1, level2, level3, level4, level5]
 
 export function blank(p) {
     return get_base(p).get()
