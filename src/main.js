@@ -1,6 +1,7 @@
 import { addButton } from "./button"
 import { blank, level1 } from "./levels";
 import { basicTransform } from "./transformations/basic";
+import { scale } from "./transformations/scale";
 
 class Game {
     
@@ -28,7 +29,10 @@ class Game {
 
         // This is how to add a new button
         addButton(this.buttonsContainer, "red", () => {
-            window.user = basicTransform(window.user, window.user_p5)
+          window.user = basicTransform(window.user, window.user_p5)
+        })
+        addButton(this.buttonsContainer, "blue", () => {
+          window.user = scale(2)
         })
         console.log(this.reference_canvas)
         new p5(this.canvasHandle("reference"), this.canvas_container);
