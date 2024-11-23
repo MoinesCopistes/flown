@@ -2,6 +2,9 @@ import { addButton } from "./button"
 import { blank, level1 } from "./levels";
 import { basicTransform } from "./transformations/basic";
 import { half_cutter } from "./transformations/half_cutter";
+import { scale } from "./transformations/scale";
+import { rotate } from "./transformations/rotation";
+
 
 class Game {
     
@@ -9,6 +12,7 @@ class Game {
         return (p) => {
             window[globalImageName+"_p5"] = p
             p.setup = function () {
+                p.pixelDensity(10);
                 p.createCanvas(700, 300);
                 p.background(0);
                 window[globalImageName] = globalImageName == "reference" ? level1(p) : blank(p)
@@ -29,7 +33,7 @@ class Game {
 
         // This is how to add a new button
         addButton(this.buttonsContainer, "red", () => {
-            window.user = basicTransform(window.user, window.user_p5)
+          window.user = basicTransform(window.user, window.user_p5)
         })
         addButton(this.buttonsContainer, "blue", () => {
             window.user = half_cutter(window.user, window.user_p5)
@@ -37,6 +41,13 @@ class Game {
         addButton(this.buttonsContainer, "green", () => {
             window.user = blank(window.user_p5)
         })
+        addButton(this.buttonsContainer, "gray", () => {
+          window.user = scale(2)
+        })        
+        addButton(this.buttonsContainer, "yellow", () => {
+          window.user = rotate(0.785)
+        })
+        
         console.log(this.reference_canvas)
         new p5(this.canvasHandle("reference"), this.canvas_container);
         new p5(this.canvasHandle("user"), this.canvas_container);
