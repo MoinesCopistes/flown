@@ -12,6 +12,9 @@ import { line_cutter } from "./transformations/line_cutter";
 import { edge } from "./transformations/edge";
 import { logUniqueRGBA } from "./utils";
 import { merge } from "./transformations/merge";
+
+import { drawAscii, grayscale } from "./transformations/picture";  
+
 class Game {
   switchCanvas() {
           let tmp = window.user;
@@ -233,9 +236,12 @@ class Game {
   newCanvasSketch(p) {
     let img;
     p.setup = () => {
+      p.drawingContext.imageSmoothingEnabled = false;
       p.createCanvas(700, 500);
       img = p.loadImage("https://cdn.webshopapp.com/shops/276355/files/453554637/golden-retriever.jpg", () => {
-        p.image(img, p.width/2 - img.width/2, 0, img.width, img.height);
+        let grayscale_pic = grayscale(img, p, 9, 4);
+        drawAscii(grayscale_pic, p)
+        // p.image(grayscale_pic, p.width/2 - img.width/2, 0, img.width, img.height);
       });
     };
   }
