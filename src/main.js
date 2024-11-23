@@ -43,7 +43,7 @@ class Game {
             window.user = blank(window.user_p5)
         })
         addButton(this.buttonsContainer, "gray", () => {
-          window.user = scale(2)
+          window.user = scale(2, window.user)
         })        
         addButton(this.buttonsContainer, "yellow", () => {
           window.user = rotate(0.785)
