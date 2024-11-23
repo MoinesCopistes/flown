@@ -159,7 +159,7 @@ class Game {
     }
     `)
     addButton(this.buttonsContainer, "orange", () => {
-      window.user = form_rounding(window.user, window.user_p5)
+      window.user = Round(window.user, window.user_p5)
     },`
     0% {
       border-radius: 100%;
@@ -212,6 +212,9 @@ class Game {
     console.log(this.reference_canvas)
     new p5(this.canvasHandle("reference"), this.canvas_container);
     new p5(this.canvasHandle("user"), this.canvas_container);
+
+    
+
   }
 
   toggleCanvasSwap() {
