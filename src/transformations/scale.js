@@ -12,5 +12,8 @@ export function scale(scale_factor) {
     p.height * scale_factor
   );
 
-  return base.get();
+  let image = base.get()
+  base.remove()
+  base = null;
+  return image
 }

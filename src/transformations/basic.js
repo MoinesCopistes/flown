@@ -5,5 +5,8 @@ export function basicTransform(image, p) {
     base.fill(0);
     base.noSmooth();
     base.rect(-100, -25, 200, 50)
-    return base.get()
+    image = base.get()
+    base.remove()
+    base = null;
+    return image
 }

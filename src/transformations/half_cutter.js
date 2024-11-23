@@ -6,5 +6,8 @@ export function half_cutter(image, p) {
     base.fill(255);
     base.noStroke();
     base.rect(0, 0, base.width / 2, base.height)
-    return base.get()
+    image = base.get()
+    base.remove()
+    base = null;
+    return image
 }

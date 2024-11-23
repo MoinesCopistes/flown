@@ -5,5 +5,8 @@ export function rotate(angle) {
   base.rotate(angle)
   base.noSmooth();
   base.image(window.user, -p.width / 2, -p.height / 2, p.width, p.height);
-  return base.get();
+  let image = base.get()
+  base.remove()
+  base = null;
+  return image
 }
