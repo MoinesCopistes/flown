@@ -22,6 +22,13 @@
             <div id="buttons"></div>
         </div>    
     </div>
+    <div class="container">
+        <div class="barcontainer">
+            <div class="bar">
+
+            </div>
+        </div>
+    </div>
 
 
 
@@ -63,7 +70,7 @@
         height: 30vh;
         width: 30vw;
         margin-bottom: 30px;
-        border: 1px solid black;
+        border: 1px solid #414A4C;
         border-radius: 15px;
     }
     button {
@@ -87,6 +94,42 @@
         align-items: center;
         justify-content: center;
       }
+      .container{
+        overflow: hidden;
+        position: absolute;
+        top: 17.5vh;
+        left: 27vw;
+        height: 624px;
+        }
+
+        .barcontainer{
+        background-color: #ffffff;
+        border: 1px solid #414A4C;
+        position: relative;
+        transform: translateY(-50%);
+        top: 50%;
+        margin-left: 50px;
+        width: 10px;
+        height: 100%;
+        float: left;
+        box-sizing: border-box;
+        }
+        
+        .bar{
+        background-color: #e74c3c;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 80%;
+        box-sizing: border-box;
+        animation: grow 1.5s ease-out forwards;
+        transform-origin: bottom;
+        }
+        @keyframes grow{
+        from{
+            transform: scaleY(0);
+        }
+        }
   </style>
 </body>
 
