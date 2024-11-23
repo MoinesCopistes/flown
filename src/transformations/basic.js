@@ -1,4 +1,4 @@
-import { get_base } from "../utils"
+import { get_base } from "../utils";
 
 export function basicTransform(image, p) {
     let base = get_base(p);

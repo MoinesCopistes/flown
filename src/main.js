@@ -1,5 +1,5 @@
 import { addButton } from "./button"
-import { blank, level1, level2 } from "./levels";
+import { blank, level1, level2, level3, level4 } from "./levels";
 import { basicTransform } from "./transformations/basic";
 import { half_cutter } from "./transformations/half_cutter";
 import { scale } from "./transformations/scale";
@@ -51,7 +51,7 @@ class Game {
           window.user = basicTransform(window.user, window.user_p5)
         })
         addButton(this.buttonsContainer, "blue", () => {
-          window.user = half_cutter(window.user, window.user_p5)
+          window.user = form_rounding(window.user, window.user_p5)
         })
         addButton(this.buttonsContainer, "green", () => {
             window.user = blank(window.user_p5)
@@ -64,7 +64,11 @@ class Game {
         })
 
         addButton(this.buttonsContainer, "black", () => {
-          this.setLevel(level2)
+          this.setLevel(level4)
+        })
+
+        addButton(this.buttonsContainer, "orange", () => {
+          window.user = inverse(window.user, window.user_p5);
         })
         
         
