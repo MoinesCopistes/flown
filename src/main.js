@@ -2,11 +2,15 @@ import { addButton } from "./button"
 import { blank, level1, level2 } from "./levels";
 import { basicTransform } from "./transformations/basic";
 import { half_cutter } from "./transformations/half_cutter";
-import { scale } from "./transformations/scale";
+import { scale } from "./transformations/scale2";
 import { rotate } from "./transformations/rotation";
 import { form_rounding } from "./transformations/form_rounding";
 import { inverse } from "./transformations/inverse";
 import { line_cutter } from "./transformations/line_cutter";
+
+
+import { edge } from "./transformations/edge";
+import { logUniqueRGBA } from "./utils";
 class Game {
     
     setLevel(level) {
@@ -57,17 +61,21 @@ class Game {
             window.user = blank(window.user_p5)
         })
         addButton(this.buttonsContainer, "gray", () => {
-          window.user = scale(2, window.user)
+          window.user = scale(window.user, window.user_p5)
         })        
         addButton(this.buttonsContainer, "yellow", () => {
           window.user = rotate(0.785)
         })
-
         addButton(this.buttonsContainer, "black", () => {
           this.setLevel(level2)
         })
+        addButton(this.buttonsContainer, "brown", () => {
+          window.user = edge(window.user, window.user_p5)
+        })
         
-        
+        addButton(this.buttonsContainer, "brown", () => {
+          logUniqueRGBA(window.user)
+        })
         console.log(this.reference_canvas)
         new p5(this.canvasHandle("reference"), this.canvas_container);
         new p5(this.canvasHandle("user"), this.canvas_container);
