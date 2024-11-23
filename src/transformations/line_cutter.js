@@ -1,5 +1,6 @@
 export function line_cutter(image,p){
     let base = p.createGraphics(p.width, p.height);
+    base.drawingContext.imageSmoothingEnabled = false;
     base.image(image, 0, 0)
     base.fill(255,255,255);
     base.noStroke();

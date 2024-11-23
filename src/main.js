@@ -11,7 +11,13 @@ import { line_cutter } from "./transformations/line_cutter";
 
 import { edge } from "./transformations/edge";
 import { logUniqueRGBA } from "./utils";
+import { merge } from "./transformations/merge";
 class Game {
+  switchCanvas() {
+          let tmp = window.user;
+          window.user = window.user2;
+          window.user2 = tmp; 
+  }
   setLevel(level) {
     window.level = level;
     window.user_p5.loadLevel();
@@ -32,7 +38,9 @@ class Game {
         p.background(255);
         // avoid looping at 60fps
         p.noLoop();
+        window.user2 = blank(p);
         p.loadLevel();
+        p.drawingContext.imageSmoothingEnabled = false;
       };
       p.draw = function () {
         p.background(255);
@@ -40,6 +48,18 @@ class Game {
         if (image) {
           p.image(image, 0, 0);
         }
+        if (globalImageName == "user") {
+        let image = window.user2;
+        if (image) {  
+          p.stroke(255, 0, 0);  // Set the stroke color (red in this case)
+          p.strokeWeight(4);  // Set stroke weight (thickness)
+          
+          // Draw a rectangle around the image
+          p.rect(15, 15, p.width/4, p.height/4);  
+          p.image(image, 15, 15, p.width/4, p.height/4)
+        }
+
+      }
       };
     };
   }
@@ -50,7 +70,6 @@ class Game {
     this.pictureContainer = document.getElementById("picture");
     this.pictureCreated = false; // Flag to check if the new canvas has been created
     this.isSwapped = false; // Flag to track the current canvas state
-    
     window.level = level1;
 
     // This is how to add a new button
@@ -178,6 +197,17 @@ class Game {
     addButton(this.buttonsContainer, "black", () => {
       this.setLevel(level2)
     })
+    addButton(this.buttonsContainer, "#81ecec", () => {
+                  this.switchCanvas();
+                  window.user = blank(window.user_p5);
+                  window.user = merge(window.user, window.user2, window.user_p5);
+    })
+    addButton(this.buttonsContainer, "blue", () => {
+      this.switchCanvas()
+    })
+    addButton(this.buttonsContainer, "red", () => {
+      window.user = merge(window.user, window.user2, window.user_p5);
+})
     console.log(this.reference_canvas)
     new p5(this.canvasHandle("reference"), this.canvas_container);
     new p5(this.canvasHandle("user"), this.canvas_container);

@@ -1,6 +1,7 @@
 export function scale(image, p) {
     // Create a graphics buffer with the same size as the image
     let base = p.createGraphics(p.width, p.height);
+    base.drawingContext.imageSmoothingEnabled = false;
 
     // Get the dimensions of the original image
     let imgWidth = image.width;

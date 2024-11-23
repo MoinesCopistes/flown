@@ -2,7 +2,8 @@ export function scale(scale_factor, image) {
   let p = window.user_p5;
 
   let base = p.createGraphics(p.width, p.height);
-  
+  base.drawingContext.imageSmoothingEnabled = false;
+
   p.noSmooth();
   
 

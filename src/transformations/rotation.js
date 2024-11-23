@@ -2,6 +2,7 @@ import { get_base } from "../utils";
 
 export function rotate(image, p) {
   let base = p.createGraphics(p.width, p.height);
+  base.drawingContext.imageSmoothingEnabled = false;
   base.translate(p.width / 2, p.height / 2);
   base.rotate(Math.PI/2)
   base.noSmooth();

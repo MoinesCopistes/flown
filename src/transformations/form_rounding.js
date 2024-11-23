@@ -3,6 +3,7 @@ import { get_base } from "../utils"
 export function form_rounding(image,p){
     let pi = image;
     let mask = p.createGraphics(p.width, p.height);
+    mask.drawingContext.imageSmoothingEnabled = false;
 
     mask.clear(); // Black (transparent when used as a mask)
     mask.fill(255);     // White (visible when used as a mask)
