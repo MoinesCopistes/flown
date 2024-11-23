@@ -5,7 +5,7 @@ export function get_base(p) {
     return base;
 }
 
-export function Comparaison(reference, user){
+export function comparaison(reference, user){
     reference.loadPixels();
     user.loadPixels();
     let r = reference.pixels;
@@ -17,4 +17,21 @@ export function Comparaison(reference, user){
         }
     }
     return ret;
+}
+
+export function logUniqueRGBA(image) {
+  image.loadPixels();
+  let uniqueColors = new Set();
+
+  for (let i = 0; i < image.pixels.length; i += 4) {
+    let r = image.pixels[i];
+    let g = image.pixels[i + 1];
+    let b = image.pixels[i + 2];
+    let a = image.pixels[i + 3];
+    let rgba = `rgba(${r},${g},${b},${a})`;
+    uniqueColors.add(rgba);
+  }
+
+  // Log the unique RGBA values to the console
+  console.log(Array.from(uniqueColors));
 }

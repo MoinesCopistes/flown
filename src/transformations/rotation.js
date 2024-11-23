@@ -8,5 +8,6 @@ export function rotate(angle) {
   let image = base.get()
   base.remove()
   base = null;
+  image.filter(p.THRESHOLD, 0.5)
   return image
 }
