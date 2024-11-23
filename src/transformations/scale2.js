@@ -22,6 +22,7 @@ export function scale(image, p) {
             let r = image.pixels[(y * imgWidth + x) * 4];  // R value
             let g = image.pixels[(y * imgWidth + x) * 4+1];  // R value
             let b = image.pixels[(y * imgWidth + x) * 4+2];  // R value
+            let a = image.pixels[(y * imgWidth + x) * 4+3];  // R value
             // Calculate the new coordinates in the base image
             // Scale the coordinates by 2 and adjust so the center remains the same
             let newX = (x - centerX) * 2 + base.width / 2;
@@ -36,7 +37,7 @@ export function scale(image, p) {
                         base.pixels[baseIndex] = r;
                         base.pixels[baseIndex + 1] = g;
                         base.pixels[baseIndex + 2] = b;
-                        base.pixels[baseIndex + 3] = 255;
+                        base.pixels[baseIndex + 3] = a;
                     }
                 }
             }
