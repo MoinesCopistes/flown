@@ -1,5 +1,5 @@
 import { get_base } from "./utils";
-import { basicTransform } from "./transformations/basic";
+import { Rect } from "./transformations/basic";
 import { form_rounding } from "./transformations/form_rounding";
 import { inverse } from "./transformations/inverse";
 import { line_cutter } from "./transformations/line_cutter";
@@ -11,20 +11,20 @@ export function blank(p) {
 
 export function level1(p) {
     let image = blank(p);
-    image = basicTransform(image,p);
+    image = Rect(image,p);
     return image;
 }
 
 export function level2(p) {
     let image = blank(p);
-    image = basicTransform(image,p);
+    image = Rect(image,p);
     image = form_rounding(image,p);
     return image;
 }
 
 export function level3(p) {
     let image = blank(p);
-    image = basicTransform(image,p);
+    image = Rect(image,p);
     image = form_rounding(image,p);
     image = line_cutter(image,p);
     return image;
@@ -32,7 +32,7 @@ export function level3(p) {
 
 export function level4(p) {
     let image = blank(p);
-    image = basicTransform(image,p);
+    image = Rect(image,p);
     image = form_rounding(image,p);
     image = line_cutter(image,p);
     image = inverse(image,p);
