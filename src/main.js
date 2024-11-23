@@ -150,11 +150,9 @@ class Game {
     }, `
     0% {
       background-color: #3498db;
-      border: 3px solid #3498db;
     }
     100% {
       background-color: #9b59b6;
-      border: 3px solid #9b59b6;
     }
     `)
     addButton(this.buttonsContainer, "orange", () => {
