@@ -11,9 +11,9 @@ import { edge } from "./transformations/edge";
 import { merge } from "./transformations/merge";
 import { blank } from "./transformations/basic";
 import { addButton } from "./button"
+export const LEVELS = [level1, level2, level3, level4, level5]
 
 export function level1(p) {
-
     addButton("blank");
     addButton("rect");
     addButton("rotate");

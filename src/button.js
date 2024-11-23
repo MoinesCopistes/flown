@@ -1,7 +1,7 @@
 import { BUTTONS } from "./buttons";
+import { comparaison } from "./utils";
 
 export function addButton(buttonName) {
-    console.log(BUTTONS[buttonName]);
     let button = BUTTONS[buttonName];    
     console.log("adding button")
     console.log(button["color"])
@@ -13,6 +13,16 @@ export function addButton(buttonName) {
         button["callback"]();
         window.user_p5.redraw()
         btn.disabled = false;
+        if (comparaison(window.reference, window.user) >= 0.95) {
+            setTimeout(() => {
+                /*window.level += 1;
+                window.user_p5.loadLevel();
+                window.reference_p5.loadLevel();*/
+                window.game.toggleCanvasSwap();
+
+            }, 500)
+           
+        }
     });
     console.log(button["animation"])
     if (button["animation"] != null) {
