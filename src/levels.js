@@ -9,13 +9,15 @@ import { inverse } from "./transformations/inverse";
 import { line_cutter } from "./transformations/line_cutter";
 import { edge } from "./transformations/edge";
 import { merge } from "./transformations/merge";
-
-
-export function blank(p) {
-    return get_base(p).get()
-}
+import { blank } from "./transformations/basic";
+import { addButton } from "./button"
 
 export function level1(p) {
+
+    addButton("blank");
+    addButton("rect");
+    addButton("rotate");
+
     let image = blank(p);
     image = Rect(image,p);
     image = rotate(image,p);
@@ -24,6 +26,9 @@ export function level1(p) {
 }
 
 export function level2(p) {
+
+    addButton("triangle");    
+
     let image = blank(p);
     image = Triangle(image,p);
     image = rotate(image,p);
@@ -33,6 +38,11 @@ export function level2(p) {
 }
 
 export function level3(p) {
+
+    addButton("round");
+    addButton("half_cutter");
+    addButton("scale");
+
     let image = blank(p);
     image = Rect(image,p);
     image = half_cutter(image,p);
@@ -45,6 +55,11 @@ export function level3(p) {
 }
 
 export function level4(p) {
+
+    addButton("edge");
+    addButton("switch");
+    addButton("merge");
+
     let image = blank(p);
     image = Rect(image,p);
     image = rotate(image,p);

@@ -1,4 +1,4 @@
-import { blank } from "../levels";
+import { blank } from "./basic";
 
 export function merge(image1, image2, p) {
     let base = blank(p)
