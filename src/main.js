@@ -183,7 +183,7 @@ class Game {
       window.user = line_cutter(window.user, window.user_p5)
     },`
     0% {
-      background: linear-gradient(to right, transparent 0%, transparent 45%, var(--color) 46%, transparent 47%, transparent 100%);
+      background: linear-gradient(to right, transparent 0%, transparent 48%, var(--color) 50%, transparent 52%, transparent 100%);
     }
     100% {
       background: var(--color);
