@@ -4,7 +4,7 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   publicDir: 'public', // This is the default
   // Other configurations...
-  base: '/flown/', // Replace 'repo-name' with your actual repository name,
+  base: '/picasso/', // Replace 'repo-name' with your actual repository name,
   build: {
     rollupOptions: {
       external: ["background.js"]
