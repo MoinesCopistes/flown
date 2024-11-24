@@ -13,6 +13,7 @@ class Game {
           window.switched = !window.switched;
   }
   setLevel(level) {
+    window.user_ops = [[], []]
     window.level = level;
     window.user_p5.loadLevel();
     window.reference_p5.loadLevel();

@@ -128,5 +128,6 @@ export function parseReference(reference, p) {
         }
         }
 
+    
     return images[switched ? 1 : 0];
 }
