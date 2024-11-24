@@ -33,7 +33,14 @@ export function addButton(buttonName) {
             `@keyframes ${animationName} { ${button["animation"]} }`,
             styleSheet.cssRules.length
         );
-        btn.style.animation = `${animationName} 5s ease-in-out forwards`;
+    
+        btn.addEventListener("mouseover", function() {
+            btn.style.animation = `${animationName} 2s ease-in-out forwards`;
+        });
+    
+        btn.addEventListener("mouseout", function() {
+            btn.style.animation = "";
+        });
     }
     let container = document.getElementById("buttons");
     container.appendChild(btn);

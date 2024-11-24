@@ -41,7 +41,6 @@ class Game {
         }
         if (globalImageName == "user") {
         let image = window.user2;
-        console.log(window.level)
         if (image && window.level > 2) {  
  
           p.image(image, 15, 15, p.width/4, p.height/4)

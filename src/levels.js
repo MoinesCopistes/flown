@@ -64,7 +64,6 @@ export function level3(p,d) {
 export function level4(p,d) {
 
     if (d) {
-        addButton("edge");
         addButton("switch");
         addButton("merge");
     }
