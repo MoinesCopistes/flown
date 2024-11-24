@@ -2,17 +2,15 @@ import { Rect } from "./transformations/basic";
 import { half_cutter } from "./transformations/half_cutter";
 import { scale } from "./transformations/scale2";
 import { rotate } from "./transformations/rotation";
-import { form_rounding, Round} from "./transformations/form_rounding";
-import { form_triangle, Triangle } from "./transformations/form_triangle";
-import { inverse } from "./transformations/inverse";
-import { line_cutter } from "./transformations/line_cutter";
+import { Round} from "./transformations/form_rounding";
+import { Triangle } from "./transformations/form_triangle";
 import { edge } from "./transformations/edge";
 import { blank } from "./transformations/basic";
 import { merge } from "./transformations/merge";
 
 export const BUTTONS = {
     rect: {
-        color: "red",
+        color: "#e74c3c",
         animation: `0% {
                             border-radius: 0%;
                          }
@@ -24,7 +22,7 @@ export const BUTTONS = {
         }
     },
     half_cutter: {
-        color: "blue",
+        color: "#2980b9",
         animation: `
                         0% {
                             clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%);
@@ -38,7 +36,7 @@ export const BUTTONS = {
         }
     },
     blank: {
-        color: "green",
+        color: "#27ae60",
         animation: `
                         0% {
                         background: transparent;
@@ -58,7 +56,7 @@ export const BUTTONS = {
         }
     },
     scale: {
-        color: "gray",
+        color: "#7f8c8d",
         animation: `
                         0% {
                         transform: scale(0.5);
@@ -72,7 +70,7 @@ export const BUTTONS = {
         }
     },
     rotate: {
-        color: "yellow",
+        color: "#f1c40f",
         animation: `
                         0% {
                         transform: rotate(90deg);
@@ -88,7 +86,7 @@ export const BUTTONS = {
         }
     },
     edge: {
-        color: "brown",
+        color: "#c0392b",
         animation: `
                         0% {
                           background-color: transparent;
@@ -104,7 +102,7 @@ export const BUTTONS = {
         }
     },
     round: {
-        color: "orange",
+        color: "#e67e22",
         animation: `
                         0% {
                           border-radius: 100%;
@@ -118,7 +116,7 @@ export const BUTTONS = {
         }
     },
     triangle: {
-        color: "pink",
+        color: "#9b59b6",
         animation: `
                         0% {
                           clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
@@ -136,14 +134,14 @@ export const BUTTONS = {
         }
     },
     switch: {
-        color: "purple",
+        color: "#8e44ad",
         animation: null,
         callback: () => {
             window.game.switchCanvas();
         }
     },
     merge: {
-        color : "lime",
+        color : "#2ecc71",
         animation: null,
         callback: () => {
             window.user = merge(window.user, window.user2, window.user_p5);

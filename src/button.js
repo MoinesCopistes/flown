@@ -4,8 +4,6 @@ import { comparaison } from "./utils";
 
 export function addButton(buttonName) {
     let button = BUTTONS[buttonName];    
-    console.log("adding button")
-    console.log(button["color"])
     let btn = document.createElement("button")
     btn.style.setProperty("--color", button["color"]);
     btn.className = "transformation"
@@ -14,7 +12,9 @@ export function addButton(buttonName) {
         button["callback"]();
         window.user_p5.redraw()
         btn.disabled = false;
-        if (comparaison(window.reference, window.user) >= THRESHOLDS[window.level]) {
+        let percentage = comparaison(window.reference, window.user);
+        document.getElementById("bar").style.height = `${(percentage) * 100}%`;
+        if (percentage >= THRESHOLDS[window.level]) {
             setTimeout(() => {
                 /*window.level += 1;
                 window.user_p5.loadLevel();
@@ -25,7 +25,6 @@ export function addButton(buttonName) {
            
         }
     });
-    console.log(button["animation"])
     if (button["animation"] != null) {
         const animationName = `button-animation-${Math.random()}`.replace(".", "");
         const styleSheet = document.styleSheets[0];
