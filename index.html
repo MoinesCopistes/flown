@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <link rel="icon" type="image/svg+xml" href="/duck.svg" />
+        <link rel="icon" type="image/svg+xml" href="/icon.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script type="module" src="/src/main.js"></script>
         <script type="module" src="/background.js"></script>
@@ -11,7 +11,7 @@
             src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/p5.min.js"
             onload="new window.Game()"
         ></script>
-        <title>COUBEH</title>
+        <title>Picasso</title>
     </head>
     <body>
 
@@ -74,34 +74,34 @@
         border-radius: 15px;
     }
     button {
-          background-color: var(--color);
-          outline: none;
-          border: none;
-          padding: 20px 35px;
-          border-radius: 10px;
-          transition: all 0.2s ease;
-          margin-right: 10px;
-          margin-top: 15px;
-      }
-      button:hover {
+        background-color: var(--color);
+        outline: none;
+        border: none;
+        padding: 20px 35px;
+        border-radius: 10px;
+        transition: all 0.2s ease;
+        margin-right: 10px;
+        margin-top: 15px;
+    }
+    button:hover {
         cursor: pointer;
-      }    
+    }    
       #buttons {
         max-width: 40vw;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
-      }
-      #container{
+    }
+    #container{
         overflow: hidden;
         position: absolute;
         top: 16.5vh;
         left: 27vw;
         height: 624px;
-        }
+    }
 
-        .barcontainer{
+    .barcontainer{
         background-color: #ffffff;
         border: 1px solid #414A4C;
         position: relative;
@@ -112,9 +112,9 @@
         height: 100%;
         float: left;
         box-sizing: border-box;
-        }
-        
-        #bar{
+    }
+    
+    #bar{
         background-color: #e74c3c;
         position: absolute;
         bottom: 0;
@@ -123,7 +123,7 @@
         box-sizing: border-box;
         transform-origin: bottom;
         transition: height 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
+    }
       
   </style>
 </body>
