@@ -14,21 +14,24 @@ import { addButton } from "./button"
 export const LEVELS = [level1, level2, level3, level4, level5];
 export const THRESHOLDS = [0.95, 0.95, 0.95, 1, 0.95];
 
-export function level1(p) {
-    addButton("blank");
-    addButton("rect");
-    addButton("rotate");
+export function level1(p,d) {
+    if (d) {
+        addButton("blank");
+        addButton("rect");
+        addButton("rotate");
+        addButton("edge");
+    
+    }
 
     let image = blank(p);
-    image = Rect(image,p);
-    image = rotate(image,p);
-    image = Rect(image,p);
+    image = Rect(image, p);
     return image;
 }
 
-export function level2(p) {
-
-    addButton("triangle");    
+export function level2(p,d) {
+    if (d) {
+        addButton("triangle");    
+    }
 
     let image = blank(p);
     image = Triangle(image,p);
@@ -38,11 +41,14 @@ export function level2(p) {
     return image;
 }
 
-export function level3(p) {
+export function level3(p,d) {
 
-    addButton("round");
-    addButton("half_cutter");
-    addButton("scale");
+    if (d) {
+        addButton("round");
+        addButton("half_cutter");
+        addButton("scale");
+    }
+   
 
     let image = blank(p);
     image = Rect(image,p);
@@ -55,11 +61,14 @@ export function level3(p) {
     return image;
 }
 
-export function level4(p) {
+export function level4(p,d) {
 
-    addButton("edge");
-    addButton("switch");
-    addButton("merge");
+    if (d) {
+        addButton("edge");
+        addButton("switch");
+        addButton("merge");
+    }
+  
 
     let image = blank(p);
     image = Rect(image,p);
@@ -74,7 +83,7 @@ export function level4(p) {
     return merge(image,image2,p);
 }
 
-export function level5(p) {
+export function level5(p, d) {
     let image1 = blank(p);
     image1 = Rect(image1,p);
     image1 = edge(image1,p);
