@@ -1,4 +1,4 @@
-import {  LEVELS } from "./levels";
+import {  LEVELS, parseReference } from "./levels";
 import { blank } from "./transformations/basic";
 
 import { drawAscii, grayscale } from "./transformations/picture";  
@@ -10,6 +10,7 @@ class Game {
           let tmp = window.user;
           window.user = window.user2;
           window.user2 = tmp; 
+          window.switched = !window.switched;
   }
   setLevel(level) {
     window.level = level;
@@ -22,8 +23,14 @@ class Game {
       window[globalImageName + "_p5"] = p;
       p.loadLevel = function () {
         p.background(255);
-        window[globalImageName] =
+        if (window.game.challengeMode) {
+          window[globalImageName] =
+            globalImageName == "reference" ? parseReference(window.sea.get("reference"), p) : blank(p);
+        } else {
+          window[globalImageName] =
           globalImageName == "reference" ? LEVELS[window.level](p, true) : blank(p);
+
+        }
         p.redraw();
       };
       p.setup = function () {
@@ -44,7 +51,7 @@ class Game {
         }
         if (globalImageName == "user") {
         let image = window.user2;
-        if (image && window.level > 3) {  
+        if (image && (window.level > 3 || window.game.challengeMode)) {  
  
           p.image(image, 15, 15, p.width/4, p.height/4)
           p.stroke("#8e44ad");  // Set the stroke color (purple in this case)
@@ -61,6 +68,13 @@ class Game {
   }
 
   constructor() {
+    window.sea = new URLSearchParams(document.location.href.split("/").pop());
+    if (window.sea.has("reference")) {
+      this.challengeMode = true;
+    } else {
+      this.challengeMode = false;
+    }
+    window.switched = false;
     this.canvas_container = document.getElementById("canvases");
     this.pictureContainer = document.getElementById("picture");
     this.buttonsContainer = document.getElementById("buttons");
@@ -68,13 +82,70 @@ class Game {
     this.pictureCreated = false; // Flag to check if the new canvas has been created
     this.isSwapped = false; // Flag to track the current canvas state
     window.level = 0;
+    window.user_ops = [[], []]
+    document.getElementById("share").addEventListener("click", () => {
+      let ref = btoa(JSON.stringify(window.user_ops))
+      console.log(`${document.location.host}/?reference=${ref}`)
+    })
     window.game = this;
     console.log(this.reference_canvas)
     new p5(this.canvasHandle("reference"), this.canvas_container);
     new p5(this.canvasHandle("user"), this.canvas_container);
     new p5(this.newCanvasSketch, this.pictureContainer);
 
-    
+    window.fireworks = new Fireworks.Fireworks(document.getElementById("fireworks"), {
+      autoresize: false,
+      opacity: 0.5,
+      acceleration: 1.05,
+      friction: 0.97,
+      gravity: 1.5,
+      particles: 50,
+      traceLength: 3,
+      traceSpeed: 10,
+      explosion: 5,
+      intensity: 50,
+      flickering: 50,
+      lineStyle: 'round',
+      hue: {
+        min: 0,
+        max: 360
+      },
+      delay: {
+        min: 30,
+        max: 60
+      },
+      rocketsPoint: {
+        min: 50,
+        max: 50
+      },
+      lineWidth: {
+        explosion: {
+          min: 1,
+          max: 4
+        },
+        trace: {
+          min: 0.1,
+          max: 1
+        }
+      },
+      brightness: {
+        min: 50,
+        max: 80
+      },
+      decay: {
+        min: 0.015,
+        max: 0.03
+      },
+      mouse: {
+        click: false,
+        move: false,
+        max: 1
+      }
+    })
+    fireworks.updateSize({
+      width: window.innerWidth,
+      height: window.innerHeight
+    })
 
   }
 
@@ -169,8 +240,16 @@ class Game {
         p.image(p.current_shape, x, y, 9, 9);
       }
       let maxI = p.shapesMap[window.level].length;
-      if ((time-maxI/1000-animTime - 0.5) > 0) {
+      if ((time-maxI/1000-animTime - 0.2) > 0) {
         p.buffer.copy(p.canvas, 0, 0, p.canvas.width, p.canvas.height, 0, 0, p.buffer.width, p.buffer.height);
+        if (window.level == LEVELS.length-4) {
+            //p.background(255)
+            //p.image(window.final_img, p.width/2-img.width/2, 0);
+            window.fireworks.start()
+            setTimeout(() => {
+                window.fireworks.stop()
+            }, 10000)
+        }
         p.noLoop()
         let button = p.createButton("");
         button.id("close")
@@ -197,4 +276,7 @@ class Game {
   }
 }
 
-window.Game = Game;
+
+document.addEventListener("DOMContentLoaded", () => {
+  window.game = new Game()
+})

@@ -12,6 +12,12 @@ export function addButton(buttonName) {
     btn.style.setProperty("--color", button["color"]);
     btn.className = "transformation"
     div.addEventListener("click", () => {
+        let i = window.switched ? 1 : 0;
+        if (buttonName == "blank")  {
+            window.user_ops[i] = []
+        } else {
+            window.user_ops[i].push(buttonName)
+        }
         btn.disabled = true;
 
         clk_sound.pause();
@@ -24,6 +30,13 @@ export function addButton(buttonName) {
         let percentage = comparaison(window.reference, window.user);
         document.getElementById("bar").style.height = `${(percentage) * 100}%`;
         if (percentage >= THRESHOLDS[window.level]) {
+            if (window.game.challengeMode) {
+                window.fireworks.start()
+                setTimeout(() => {
+                    window.fireworks.stop()
+                }, 10000)
+                return;
+            }
             setTimeout(() => {
 
                 if(window.level == 4) {

@@ -8,6 +8,8 @@ import { edge } from "./transformations/edge";
 import { merge } from "./transformations/merge";
 import { blank } from "./transformations/basic";
 import { addButton } from "./button"
+import { TRANSFORMATIONS } from "./transformations/allOfEm";
+import { BUTTONS } from "./buttons";
 export const LEVELS = [level1, level2, level3, level4, level5];
 export const THRESHOLDS = [0.95, 0.95, 0.95, 1, 0.95];
 
@@ -94,4 +96,37 @@ export function level5(p, d) {
     image4 = merge(image3, image4, p);
 
     return image4
+}
+
+export function parseReference(reference, p) {
+    let k = Object.keys(BUTTONS)
+    for (let t = 0; t < k.length; t++) {
+        addButton(k[t]);
+    }
+    let transforms = JSON.parse(atob(reference))
+    if ((transforms.length) == 0) {
+        return blank(p);
+    }
+    transforms[0].reverse()
+    transforms[1].reverse()
+    let images = [blank(p), blank(p)]
+    let switched = false;
+    while (true) {
+        let i = switched ? 1 : 0;
+        let op = transforms[i].pop()
+        if (op == undefined) {
+            break;
+        }
+        if (op == "switch") {
+            switched = !switched;
+            continue;
+        }
+        if (op == "merge") {
+            images[i] = merge(images[0], images[1], p);
+        } else {
+            images[i] = TRANSFORMATIONS[op](images[i], p)
+        }
+        }
+
+    return images[switched ? 1 : 0];
 }
