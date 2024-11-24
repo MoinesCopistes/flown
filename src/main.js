@@ -13,6 +13,7 @@ class Game {
     window.level = level;
     window.user_p5.loadLevel();
     window.reference_p5.loadLevel();
+    window.user2 = blank(window.user_p5);
   }
   canvasHandle(globalImageName) {
     return (p) => {
