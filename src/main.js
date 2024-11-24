@@ -86,7 +86,7 @@ class Game {
     document.getElementById("share").addEventListener("click", () => {
       let ref = btoa(JSON.stringify(window.user_ops))
       document.getElementById("link1").value = document.location.href;
-      document.getElementById("link2").value = `https://${document.location.host}/?reference=${ref}`
+      document.getElementById("link2").value = `${document.location.href.split("?")[0]}/?reference=${ref}`
       document.getElementById("modal").style.display = "grid"
     })
     window.game = this;
