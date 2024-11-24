@@ -195,7 +195,7 @@ class Game {
       p.drawingContext.imageSmoothingEnabled = false;
       p.canvas = p.createCanvas(1400, 850);
       p.buffer = p.createGraphics(1400, 850);
-      img = p.loadImage("https://i.guim.co.uk/img/media/dd3882c4ad0fd11a14cffc7e5edaabe5ce8a8b53/0_85_1077_646/master/1077.jpg?width=300&quality=45&auto=format&fit=max&dpr=2&s=ed76b3cad05b6af61ecb4a059c3294ab", (img) => {
+      img = p.loadImage("./rick.webp", (img) => {
         img.resize(img.width/img.height*p.height, p.height);
         let grayscale_pic = grayscale(img, p, 9, 4);
         p.img = grayscale_pic;
