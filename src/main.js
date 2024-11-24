@@ -41,10 +41,11 @@ class Game {
         }
         if (globalImageName == "user") {
         let image = window.user2;
-        if (image) {  
+        console.log(window.level)
+        if (image && window.level > 2) {  
  
           p.image(image, 15, 15, p.width/4, p.height/4)
-          p.stroke("#8e44ad");  // Set the stroke color (red in this case)
+          p.stroke("#8e44ad");  // Set the stroke color (purple in this case)
           p.strokeWeight(4);  // Set stroke weight (thickness)
           p.noFill();
           
