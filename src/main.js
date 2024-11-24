@@ -242,7 +242,7 @@ class Game {
       let maxI = p.shapesMap[window.level].length;
       if ((time-maxI/1000-animTime - 0.2) > 0) {
         p.buffer.copy(p.canvas, 0, 0, p.canvas.width, p.canvas.height, 0, 0, p.buffer.width, p.buffer.height);
-        if (window.level == LEVELS.length-4) {
+        if (window.level == LEVELS.length-1) {
             //p.background(255)
             //p.image(window.final_img, p.width/2-img.width/2, 0);
             window.fireworks.start()
