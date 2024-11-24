@@ -107,7 +107,7 @@ class Game {
       p.drawingContext.imageSmoothingEnabled = false;
       p.canvas = p.createCanvas(1400, 850);
       p.buffer = p.createGraphics(1400, 850);
-      img = p.loadImage("https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Glans_Penis_of_A_Human.jpg/640px-Glans_Penis_of_A_Human.jpg", (img) => {
+      img = p.loadImage("https://i.guim.co.uk/img/media/dd3882c4ad0fd11a14cffc7e5edaabe5ce8a8b53/0_85_1077_646/master/1077.jpg?width=300&quality=45&auto=format&fit=max&dpr=2&s=ed76b3cad05b6af61ecb4a059c3294ab", (img) => {
         img.resize(img.width/img.height*p.height, p.height);
         let grayscale_pic = grayscale(img, p, 9, 4);
         p.img = grayscale_pic;
@@ -121,31 +121,48 @@ class Game {
         let maxI = p.shapesMap[window.level].length;
         p.start = p.millis() - 1000*maxI;
       }
+   
      
     }
     p.draw  = () => {
 
+      let reductionTime = 1;
       let animTime = 3;
+      let time = (p.millis() - p.start)/1000;
 
       if (p.shapesMap == undefined) {
         return;
       }
       p.background(255);
       // show image for debug purposes
-      //p.image(img, p.width/2, 0);
+      //p.image(img, p.width/2-img.width/2, 0);
       p.image(p.buffer, 0, 0);
-      let time = (p.millis() - p.start)/1000;
+      
+      if (time < reductionTime) {
+        let ratio = p.lerp(1, 0, time/reductionTime);
+        p.image(p.current_shape, p.width/2-p.current_shape.width*ratio/2, p.height/2-p.current_shape.height*ratio/2, p.current_shape.width*ratio, p.current_shape.height*ratio)
+        return;
+      } 
+      time -= reductionTime;
+
+    
+
+
       for (let i = 0; i < p.shapesMap[window.level].length; i++) {
         let item = p.shapesMap[window.level][i];
-        let destX = item[0] + p.width/2;
+        let destX = item[0] + p.width/2-img.width/2;
         let destY = item[1];
+
+        let currX = item[2] + p.width/2;
+        let currY = item[3] + p.height/2;
+
         let ct = time - i/1000;
 
         if (ct < 0) {
           continue;
         }
-        let x = p.lerp(item[2], destX, Math.min(ct/animTime, 1));
-        let y = p.lerp(item[3], destY, Math.min(ct/animTime, 1));
+        let x = p.lerp(currX, destX, Math.min(ct/animTime, 1));
+        let y = p.lerp(currY, destY, Math.min(ct/animTime, 1));
         p.image(p.current_shape, x, y, 9, 9);
       }
       let maxI = p.shapesMap[window.level].length;
@@ -153,6 +170,7 @@ class Game {
         p.buffer.copy(p.canvas, 0, 0, p.canvas.width, p.canvas.height, 0, 0, p.buffer.width, p.buffer.height);
         p.noLoop()
         let button = p.createButton("");
+        button.id("close")
       // Create an SVG image for the button
         const svgImg = p.createImg(
           "https://www.svgrepo.com/show/442475/close-circle.svg"
