@@ -15,10 +15,12 @@ export function level1(p,d) {
     if (d) {
         addButton("blank");
         addButton("rect");
+        addButton("edge");
     }
 
     let image = blank(p);
     image = Rect(image, p);
+    image = edge(image,p)
     return image;
 }
 
@@ -57,10 +59,6 @@ export function level3(p,d) {
 }
 
 export function level4(p,d) {
-
-    if (d) {
-        addButton("edge");
-    }
 
     let image = blank(p);
     image = Rect(image,p);
