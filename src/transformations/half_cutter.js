@@ -1,5 +1,3 @@
-import { get_base } from "../utils"
-
 export function half_cutter(image, p) {
     let base = p.createGraphics(p.width, p.height);
     base.drawingContext.imageSmoothingEnabled = false;

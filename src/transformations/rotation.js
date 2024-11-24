@@ -1,5 +1,3 @@
-import { get_base } from "../utils";
-
 export function rotate(image, p) {
   let base = p.createGraphics(p.width, p.height);
   base.drawingContext.imageSmoothingEnabled = false;

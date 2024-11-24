@@ -1,5 +1,3 @@
-import { get_base } from "../utils"
-
 export function form_rounding(image,p){
     let pi = image;
     let mask = p.createGraphics(p.width, p.height);
