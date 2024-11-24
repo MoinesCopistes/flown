@@ -26,12 +26,13 @@
         <script
             defer
             src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/p5.min.js"
+            onload="new window.Game()"
         ></script>
         <title>Picasso</title>
-      <script type="module" crossorigin src="/flown/assets/index-Cn7_UOBz.js"></script>
+      <script type="module" crossorigin src="/flown/assets/index-DUgf5qSL.js"></script>
     </head>
     <body>
-    <button id="share">Share this sketch</button>
+
     <div id="particle-canvas">
         <div id="main">
             <div id="canvases"></div>
@@ -46,22 +47,12 @@
             </div>
         </div>
     </div>
-    <div id="fireworks"></div>
 
 
 
   
 
   <style>
-    #fireworks {
-        z-index: 1000;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        width: 100vh;
-        pointer-events: none;
-    }
     html,
     body {
     height: 100%;
@@ -149,9 +140,8 @@
         height: 0%;
         box-sizing: border-box;
         transform-origin: bottom;
-        transition: height 0.7s ease-in-out;
-        }
-
+        transition: height 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
       
   </style>
 </body>
