@@ -137,13 +137,13 @@ export const BUTTONS = {
         }
     },
     switch: {
-        color: "#8e44ad",
+        color: "#01a3a4",
         animation:  `
                 0% {
-                    background-color: #8e44ad
+                    background-color: #01a3a4
                 }
                 100% {
-                    background-color: #71bb52
+                    background-color: #feca5b
                 }
         `,
         callback: () => {
@@ -154,13 +154,16 @@ export const BUTTONS = {
         color : "#2ecc71",
         animation: `
         0% {
-        background: linear-gradient(to right, #71bb52 50%, #8e44ad 50%);
+        background: linear-gradient(to right, #feca5b 50%, #01a3a4 50%);
+        opacity : 0;
         }
         50% {
-        background: linear-gradient(to right, #71bb52 50%, #8e44ad 50%);
+        background: linear-gradient(to right, #feca5b 50%, #01a3a4 50%);
+        opacity ; 0.5;
         }
         100% {
-        background: linear-gradient(to right, #71bb52 50%, #8e44ad 50%);
+        background: linear-gradient(to right, #feca5b 50%, #01a3a4 50%);
+        opacity : 1;
         }`,
         callback: () => {
             window.user = merge(window.user, window.user2, window.user_p5);
