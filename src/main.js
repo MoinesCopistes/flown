@@ -78,6 +78,7 @@ class Game {
       if (this.isSwapped) {
           // Currently showing the new canvas, switch back to initial canvases
           this.pictureContainer.style.display = "none";
+          document.getElementById("container").style.display = "block";
           this.buttonsContainer.style.display = "flex";
           this.canvas_container.style.display = "flex"; // Restore the display style
           this.isSwapped = false;
