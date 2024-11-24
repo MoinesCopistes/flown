@@ -2,6 +2,8 @@ import { BUTTONS } from "./buttons";
 import { THRESHOLDS } from "./levels";
 import { comparaison } from "./utils";
 
+import { clk_sound, end_sound, win_sound } from "./sound_effects";
+
 export function addButton(buttonName) {
     let button = BUTTONS[buttonName]; 
     let div = document.createElement("div");   
@@ -11,6 +13,11 @@ export function addButton(buttonName) {
     btn.className = "transformation"
     div.addEventListener("click", () => {
         btn.disabled = true;
+
+        clk_sound.pause();
+        clk_sound.currentTime = 0;
+        clk_sound.play();
+
         button["callback"]();
         window.user_p5.redraw()
         btn.disabled = false;
@@ -18,6 +25,17 @@ export function addButton(buttonName) {
         document.getElementById("bar").style.height = `${(percentage) * 100}%`;
         if (percentage >= THRESHOLDS[window.level]) {
             setTimeout(() => {
+
+                if(window.level == 4) {
+                    end_sound.pause();
+                    end_sound.currentTime = 0;
+                    end_sound.play();
+                } else {
+                    win_sound.pause();
+                    win_sound.currentTime = 0;
+                    win_sound.play();
+                }
+
                 /*window.level += 1;
                 window.user_p5.loadLevel();
                 window.reference_p5.loadLevel();*/

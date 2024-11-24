@@ -3,6 +3,8 @@ import { blank } from "./transformations/basic";
 
 import { drawAscii, grayscale } from "./transformations/picture";  
 
+import { close_sound } from "./sound_effects";
+
 class Game {
   switchCanvas() {
           let tmp = window.user;
@@ -179,6 +181,11 @@ class Game {
         svgImg.parent(button); // Attach the SVG to the button
         button.position(window.width + 200, 10); // Position the button
         button.mousePressed(() => {
+
+          close_sound.pause();
+          close_sound.currentTime = 0;
+          close_sound.play();
+
           button.remove();
           window.game.setLevel(window.level+1)
           window.game.bar.style.height = `0%`;
