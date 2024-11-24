@@ -107,26 +107,37 @@ class Game {
       p.drawingContext.imageSmoothingEnabled = false;
       p.canvas = p.createCanvas(1400, 850);
       p.buffer = p.createGraphics(1400, 850);
-      img = p.loadImage("https://i1.sndcdn.com/artworks-x8zI2HVC2pnkK7F5-4xKLyA-t1080x1080.jpg", () => {
+      img = p.loadImage("https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Glans_Penis_of_A_Human.jpg/640px-Glans_Penis_of_A_Human.jpg", (img) => {
+        img.resize(img.width/img.height*p.height, p.height);
         let grayscale_pic = grayscale(img, p, 9, 4);
+        p.img = grayscale_pic;
         drawAscii(grayscale_pic, p)
         // p.image(grayscale_pic, p.width/2 - img.width/2, 0, img.width, img.height);
       });
       p.noLoop()
     };
+    p.keyPressed = (a) => {
+      if (a.keyCode == p.ENTER) {
+        let maxI = p.shapesMap[window.level].length;
+        p.start = p.millis() - 1000*maxI;
+      }
+     
+    }
     p.draw  = () => {
 
-      let animTime = 6;
+      let animTime = 3;
 
       if (p.shapesMap == undefined) {
         return;
       }
       p.background(255);
+      // show image for debug purposes
+      //p.image(img, p.width/2, 0);
       p.image(p.buffer, 0, 0);
       let time = (p.millis() - p.start)/1000;
       for (let i = 0; i < p.shapesMap[window.level].length; i++) {
         let item = p.shapesMap[window.level][i];
-        let destX = item[0];
+        let destX = item[0] + p.width/2;
         let destY = item[1];
         let ct = time - i/1000;
 
@@ -144,7 +155,7 @@ class Game {
         let button = p.createButton("");
       // Create an SVG image for the button
         const svgImg = p.createImg(
-          "https://i1.sndcdn.com/artworks-x8zI2HVC2pnkK7F5-4xKLyA-t1080x1080.jpg"
+          "https://www.svgrepo.com/show/442475/close-circle.svg"
         );
         svgImg.size(50, 50); // Set the size of the SVG
         svgImg.parent(button); // Attach the SVG to the button

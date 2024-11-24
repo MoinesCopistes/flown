@@ -22,20 +22,20 @@ export function addButton(buttonName) {
                 window.game.toggleCanvasSwap();
 
             }, 500)
-           
+
         }
     });
     if (button["animation"] != null) {
         const animationName = `button-animation-${Math.random()}`.replace(".", "");
         const styleSheet = document.styleSheets[0];
-    
+
         styleSheet.insertRule(
             `@keyframes ${animationName} { ${button["animation"]} }`,
             styleSheet.cssRules.length
         );
     
         btn.addEventListener("mouseover", function() {
-            btn.style.animation = `${animationName} 2s ease-in-out forwards`;
+            btn.style.animation = `${animationName} 1s ease-in-out forwards`;
         });
     
         btn.addEventListener("mouseout", function() {

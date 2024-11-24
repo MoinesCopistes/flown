@@ -80,9 +80,9 @@ export function drawAscii(img, p) {
         p.map(brightness, minB, maxB, 0, s.length - 1),
       );
 
-      let xd = 0.15 * p.width;
+      let xd = 0* p.width;
 
-      let screenX = (x + charWidth / 2 + p.width/2 - img.width/2) + xd;
+      let screenX = (x + charWidth / 2 ) + xd;
       let screenY = (y + charHeight / 2);
       p.shapesMap[s[charIndex]].push([screenX, screenY, 0, 0])
 }  }
