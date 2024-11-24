@@ -1,5 +1,3 @@
-import { level1, level2, level3, level4, level5, LEVELS } from "../levels";
-
 export function grayscale(image, p, b_levels, g_size) {
   p.noSmooth();
   let width0 = image.width;
