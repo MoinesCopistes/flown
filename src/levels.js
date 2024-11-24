@@ -18,9 +18,6 @@ export function level1(p,d) {
     if (d) {
         addButton("blank");
         addButton("rect");
-        addButton("rotate");
-        addButton("edge");
-    
     }
 
     let image = blank(p);
@@ -30,7 +27,8 @@ export function level1(p,d) {
 
 export function level2(p,d) {
     if (d) {
-        addButton("triangle");    
+        addButton("triangle");   
+        addButton("rotate");   
     }
 
     let image = blank(p);
@@ -64,10 +62,8 @@ export function level3(p,d) {
 export function level4(p,d) {
 
     if (d) {
-        addButton("switch");
-        addButton("merge");
+        addButton("edge");
     }
-  
 
     let image = blank(p);
     image = Rect(image,p);
@@ -83,6 +79,11 @@ export function level4(p,d) {
 }
 
 export function level5(p, d) {
+    if (d) {
+        addButton("switch");
+        addButton("merge");
+    }
+
     let image1 = blank(p);
     image1 = Rect(image1,p);
     image1 = edge(image1,p);
