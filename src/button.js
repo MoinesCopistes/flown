@@ -36,11 +36,11 @@ export function addButton(buttonName) {
             styleSheet.cssRules.length
         );
     
-        btn.addEventListener("mouseover", function() {
+        div.addEventListener("mouseover", function() {
             btn.style.animation = `${animationName} 1s ease-in-out forwards`;
         });
     
-        btn.addEventListener("mouseout", function() {
+        div.addEventListener("mouseout", function() {
             btn.style.animation = "";
         });
     }
