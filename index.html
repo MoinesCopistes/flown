@@ -22,9 +22,9 @@
             <div id="buttons"></div>
         </div>    
     </div>
-    <div class="container">
+    <div id="container">
         <div class="barcontainer">
-            <div class="bar" id="bar">
+            <div id="bar">
 
             </div>
         </div>
@@ -94,10 +94,10 @@
         align-items: center;
         justify-content: center;
       }
-      .container{
+      #container{
         overflow: hidden;
         position: absolute;
-        top: 17.5vh;
+        top: 16.5vh;
         left: 27vw;
         height: 624px;
         }
@@ -115,7 +115,7 @@
         box-sizing: border-box;
         }
         
-        .bar{
+        #bar{
         background-color: #e74c3c;
         position: absolute;
         bottom: 0;
@@ -123,14 +123,7 @@
         height: 0%;
         box-sizing: border-box;
         transform-origin: bottom;
-        }
-        @keyframes grow {
-        from {
-            transform: scaleY(0);
-        }
-        to {
-            transform: scaleY(1);
-        }
+        transition: height 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
   </style>
 </body>

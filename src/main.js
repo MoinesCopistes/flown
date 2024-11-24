@@ -61,6 +61,7 @@ class Game {
     this.canvas_container = document.getElementById("canvases");
     this.pictureContainer = document.getElementById("picture");
     this.buttonsContainer = document.getElementById("buttons");
+    this.bar = document.getElementById("bar");
     this.pictureCreated = false; // Flag to check if the new canvas has been created
     this.isSwapped = false; // Flag to track the current canvas state
     window.level = 0;
@@ -85,6 +86,7 @@ class Game {
           this.canvas_container.style.display = "none";
           this.buttonsContainer.style.display = "none";
           this.pictureContainer.style.display = "block";
+          document.getElementById("container").style.display = "none";
           // Create the p5 instance if not already created
           if (!this.newCanvasCreated) {
               new p5(this.newCanvasSketch.bind(this), this.pictureContainer);
@@ -110,6 +112,8 @@ class Game {
       button.position(window.width + 200, 10); // Position the button
       button.mousePressed(() => {
         this.setLevel(window.level+1)
+        
+        this.bar.style.height = `0%`;
         this.toggleCanvasSwap()
       }); // Attach an event to the button
       img = p.loadImage("https://i1.sndcdn.com/artworks-x8zI2HVC2pnkK7F5-4xKLyA-t1080x1080.jpg", () => {

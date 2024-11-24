@@ -12,7 +12,9 @@ export function addButton(buttonName) {
         button["callback"]();
         window.user_p5.redraw()
         btn.disabled = false;
-        if (comparaison(window.reference, window.user) >= THRESHOLDS[window.level]) {
+        let percentage = comparaison(window.reference, window.user);
+        document.getElementById("bar").style.height = `${(percentage) * 100}%`;
+        if (percentage >= THRESHOLDS[window.level]) {
             setTimeout(() => {
                 /*window.level += 1;
                 window.user_p5.loadLevel();
