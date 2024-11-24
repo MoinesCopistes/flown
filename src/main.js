@@ -85,13 +85,30 @@ class Game {
     window.user_ops = [[], []]
     document.getElementById("share").addEventListener("click", () => {
       let ref = btoa(JSON.stringify(window.user_ops))
-      console.log(`${document.location.host}/?reference=${ref}`)
+      document.getElementById("link1").value = document.location.href;
+      document.getElementById("link2").value = `https://${document.location.host}/?reference=${ref}`
+      document.getElementById("modal").style.display = "grid"
     })
     window.game = this;
     console.log(this.reference_canvas)
     new p5(this.canvasHandle("reference"), this.canvas_container);
     new p5(this.canvasHandle("user"), this.canvas_container);
     new p5(this.newCanvasSketch, this.pictureContainer);
+
+
+    document.getElementById("close_modal").addEventListener("click", () => {
+      document.getElementById("modal").style.display = "none"
+    })
+
+    document.getElementById("link1cp").addEventListener("click", () => {
+          navigator.clipboard.writeText(document.getElementById("link1").value)
+        
+      
+    })
+    document.getElementById("link2cp").addEventListener("click", () => {
+        navigator.clipboard.writeText(document.getElementById("link2").value)
+
+    })
 
     window.fireworks = new Fireworks.Fireworks(document.getElementById("fireworks"), {
       autoresize: false,
@@ -154,18 +171,15 @@ class Game {
           window.sketch_p5.noLoop();
           // Currently showing the new canvas, switch back to initial canvases
           this.pictureContainer.style.display = "none";
-          document.getElementById("container").style.display = "block";
-          this.buttonsContainer.style.display = "flex";
-          this.canvas_container.style.display = "flex"; // Restore the display style
+          document.getElementById("main").style.opacity = 100;
           this.isSwapped = false;
       } else {
           window.sketch_p5.current_shape = window.reference;
           window.sketch_p5.start = window.sketch_p5.millis()
           window.sketch_p5.loop();
-          this.canvas_container.style.display = "none";
-          this.buttonsContainer.style.display = "none";
           this.pictureContainer.style.display = "block";
-          document.getElementById("container").style.display = "none";
+          document.getElementById("main").style.opacity = 0;
+
           // Create the p5 instance if not already created
           if (!this.newCanvasCreated) {
               this.newCanvasCreated = true;
@@ -259,7 +273,6 @@ class Game {
         );
         svgImg.size(50, 50); // Set the size of the SVG
         svgImg.parent(button); // Attach the SVG to the button
-        button.position(window.width + 200, 10); // Position the button
         button.mousePressed(() => {
 
           close_sound.pause();
