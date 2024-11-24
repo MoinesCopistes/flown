@@ -3,11 +3,13 @@ import { THRESHOLDS } from "./levels";
 import { comparaison } from "./utils";
 
 export function addButton(buttonName) {
-    let button = BUTTONS[buttonName];    
-    let btn = document.createElement("button")
+    let button = BUTTONS[buttonName]; 
+    let div = document.createElement("div");   
+    let btn = document.createElement("button");
+    div.appendChild(btn);
     btn.style.setProperty("--color", button["color"]);
     btn.className = "transformation"
-    btn.addEventListener("click", () => {
+    div.addEventListener("click", () => {
         btn.disabled = true;
         button["callback"]();
         window.user_p5.redraw()
@@ -42,8 +44,11 @@ export function addButton(buttonName) {
             btn.style.animation = "";
         });
     }
+
+    div.appendChild(btn);
+
     let container = document.getElementById("buttons");
-    container.appendChild(btn);
+    container.appendChild(div);
 
 
 }
